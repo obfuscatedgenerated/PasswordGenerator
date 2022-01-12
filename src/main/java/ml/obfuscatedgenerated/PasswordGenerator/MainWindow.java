@@ -1,6 +1,5 @@
 package ml.obfuscatedgenerated.PasswordGenerator;
 
-import com.sun.tools.javac.Main;
 import org.apache.pivot.beans.BXMLSerializer;
 import org.apache.pivot.collections.Map;
 import org.apache.pivot.wtk.Application;
