@@ -29,12 +29,9 @@ public class MainWindow implements Application {
         genButton.getButtonPressListeners().add(mkPassListener);
     }
 
-    ButtonPressListener mkPassListener = new ButtonPressListener() {
-        @Override
-        public void buttonPressed(Button button) {
-            List<String> includes = Arrays.asList("alpha", "upper", "numeral", "symbol");
-            passGenOutput.setText(gen.generate(includes, 16));
-        }
+    ButtonPressListener mkPassListener = button -> {
+        List<String> includes = Arrays.asList("alpha", "upper", "numeral", "symbol");
+        passGenOutput.setText(gen.generate(includes, 16));
     };
 
     @Override
