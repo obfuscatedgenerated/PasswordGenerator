@@ -1,16 +1,16 @@
-<Window title="Password Generator" maximized="true"
+<Window title="Password Generator" maximized="true" preferredHeight="200" preferredWidth="350"
         xmlns:bxml="http://pivot.apache.org/bxml"
         xmlns="org.apache.pivot.wtk">
     <FillPane orientation="vertical" styles="{backgroundColor:'#1c1c1c'}">
-        <BoxPane orientation="vertical" styles="{padding:4,spacing:4,horizontalAlignment:'center'}">
+        <FillPane orientation="vertical" styles="{padding:25,spacing:4}">
             <Label text="Password Generator"
                    styles="{font:'Arial bold 24', color:'#cccccc',
                         horizontalAlignment:'center', verticalAlignment:'center'}"/>
-        </BoxPane>
+        </FillPane>
         <BoxPane orientation="vertical" styles="{horizontalAlignment:'center',verticalAlignment:'center'}">
             <FillPane orientation="vertical">
                 <Label text="Password:" styles="{color:'#aaaaaa',horizontalAlignment:'left'}"/>
-                <TextInput editable="false" bxml:id="passGenOutput"/>
+                <TextInput editable="false" bxml:id="passGenOutput" />
                 <PushButton bxml:id="genButton" buttonData="Generate"/>
             </FillPane>
         </BoxPane>
