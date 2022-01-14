@@ -14,12 +14,7 @@ public class MainWindow implements Application {
     private Map<String, Object> ns = null;
     private Generator gen = new Generator();
 
-    private final Runnable setSize = (new Runnable() {
-        @Override
-        public void run(){
-            DesktopApplicationContext.sizeHostToFit(window);
-        }
-    });
+    private final Runnable setSize = (() -> DesktopApplicationContext.sizeHostToFit(window));
 
     @Override
     public void startup(Display display, Map<String, String> properties)
