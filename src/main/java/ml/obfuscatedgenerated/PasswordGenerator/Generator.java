@@ -11,12 +11,9 @@ public class Generator {
     private char[] numeral = "1234567890".toCharArray();
     private char[] symbol = "~`!@#$%^&*()_-+={[}]|\\:;\"'<,>.?/".toCharArray();
 
-    private static char[] push_char(char[] array, char push) {
-        char[] longer = new char[array.length + 1];
-        for (int i = 0; i < array.length; i++)
-            longer[i] = array[i];
-        longer[array.length] = push;
-        return longer;
+    private char[] push_char(char[] array, char push) {
+        char[] pArr = {push};
+        return concat_char_arr(array,pArr);
     }
 
     private char[] concat_char_arr(char[] a1, char[] a2) {
