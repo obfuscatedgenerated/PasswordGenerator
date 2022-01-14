@@ -1,12 +1,9 @@
 package ml.obfuscatedgenerated.PasswordGenerator;
 
-import org.apache.pivot.beans.BXML;
 import org.apache.pivot.beans.BXMLSerializer;
 import org.apache.pivot.collections.Map;
 import org.apache.pivot.wtk.*;
 
-import java.lang.reflect.Array;
-import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,6 +27,7 @@ public class MainWindow implements Application {
     }
 
     ButtonPressListener mkPassListener = button -> {
+        // TODO: user options (length, structure)
         List<String> includes = Arrays.asList("alpha", "upper", "numeral", "symbol");
         passGenOutput.setText(gen.generate(includes, 16));
     };
