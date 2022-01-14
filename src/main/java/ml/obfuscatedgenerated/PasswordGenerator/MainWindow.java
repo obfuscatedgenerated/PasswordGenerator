@@ -1,14 +1,14 @@
 package ml.obfuscatedgenerated.PasswordGenerator;
 
+import org.apache.pivot.beans.BXML;
 import org.apache.pivot.beans.BXMLSerializer;
 import org.apache.pivot.collections.Map;
-import org.apache.pivot.wtk.Application;
-import org.apache.pivot.wtk.DesktopApplicationContext;
-import org.apache.pivot.wtk.Display;
-import org.apache.pivot.wtk.Window;
+import org.apache.pivot.wtk.*;
 
 public class MainWindow implements Application {
     private Window window = null;
+    private TextInput passGenOutput = null;
+    private Map<String,Object> ns = null;
 
     @Override
     public void startup(Display display, Map<String, String> properties)
@@ -16,6 +16,9 @@ public class MainWindow implements Application {
         BXMLSerializer bxmlSerializer = new BXMLSerializer();
         window = (Window)bxmlSerializer.readObject(MainWindow.class, "PassGen.bxml");
         window.open(display);
+        ns = bxmlSerializer.getNamespace();
+        passGenOutput = (TextInput) ns.get("passGenOutput");
+        passGenOutput.setText("test!");
     }
 
     @Override
