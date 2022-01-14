@@ -11,6 +11,7 @@ public class MainWindow implements Application {
     private Window window = null;
     private TextInput passGenOutput = null;
     private PushButton genButton = null;
+    private PushButton copyButton = null;
     private Map<String, Object> ns = null;
     private Generator gen = new Generator();
 
@@ -26,7 +27,9 @@ public class MainWindow implements Application {
         passGenOutput = (TextInput) ns.get("passGenOutput");
         genButton = (PushButton) ns.get("genButton");
         genButton.getButtonPressListeners().add(mkPassListener);
-        DesktopApplicationContext.scheduleRecurringCallback(setSize,1);
+        copyButton = (PushButton) ns.get("copyButton");
+        copyButton.getButtonPressListeners().add(copyListener);
+        DesktopApplicationContext.scheduleRecurringCallback(setSize, 1);
     }
 
     private final ButtonPressListener mkPassListener = button -> {
@@ -35,6 +38,11 @@ public class MainWindow implements Application {
         // TODO: chunked mode with custom delimiters (e.g. 12345_abcde_@}{:?)
         List<String> includes = Arrays.asList("alpha", "upper", "numeral", "symbol");
         passGenOutput.setText(gen.generate(includes, 16));
+    };
+
+    private final ButtonPressListener copyListener = button -> {
+        String content = passGenOutput.getText();
+        java.awt.Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new java.awt.datatransfer.StringSelection(content), null);
     };
 
     @Override
@@ -55,7 +63,7 @@ public class MainWindow implements Application {
     }
 
     public static void main(String[] args) {
-	System.setProperty("apple.awt.application.name", "Password Generator");
+        System.setProperty("apple.awt.application.name", "Password Generator");
         DesktopApplicationContext.main(MainWindow.class, args);
     }
 }

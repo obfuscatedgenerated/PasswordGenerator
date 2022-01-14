@@ -10,8 +10,11 @@
         <BoxPane orientation="vertical" styles="{horizontalAlignment:'center',verticalAlignment:'center'}">
             <FillPane orientation="vertical">
                 <Label text="Password:" styles="{color:'#aaaaaa',horizontalAlignment:'left'}"/>
-                <TextInput editable="false" bxml:id="passGenOutput" />
-                <PushButton bxml:id="genButton" buttonData="Generate"/>
+                <TextInput editable="false" bxml:id="passGenOutput"/>
+                <FillPane orientation="horizontal" styles="{}">
+                    <PushButton bxml:id="genButton" buttonData="Generate"/>
+                    <PushButton bxml:id="copyButton" buttonData="Copy"/>
+                </FillPane>
             </FillPane>
         </BoxPane>
     </FillPane>
