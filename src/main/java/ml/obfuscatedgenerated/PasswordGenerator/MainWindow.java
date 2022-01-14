@@ -5,20 +5,27 @@ import org.apache.pivot.beans.BXMLSerializer;
 import org.apache.pivot.collections.Map;
 import org.apache.pivot.wtk.*;
 
+import java.lang.reflect.Array;
+import java.security.SecureRandom;
+import java.util.Arrays;
+import java.util.List;
+
 public class MainWindow implements Application {
     private Window window = null;
     private TextInput passGenOutput = null;
-    private Map<String,Object> ns = null;
+    private Map<String, Object> ns = null;
+    private Generator gen = new Generator();
 
     @Override
     public void startup(Display display, Map<String, String> properties)
             throws Exception {
         BXMLSerializer bxmlSerializer = new BXMLSerializer();
-        window = (Window)bxmlSerializer.readObject(MainWindow.class, "PassGen.bxml");
+        window = (Window) bxmlSerializer.readObject(MainWindow.class, "PassGen.bxml");
         window.open(display);
         ns = bxmlSerializer.getNamespace();
         passGenOutput = (TextInput) ns.get("passGenOutput");
-        passGenOutput.setText("test!");
+        List<String> includes = Arrays.asList(new String[]{"alpha", "upper", "numeral", "symbol"});
+        passGenOutput.setText(gen.generate(includes,16));
     }
 
     @Override
