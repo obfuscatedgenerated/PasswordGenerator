@@ -13,6 +13,7 @@ import java.util.List;
 public class MainWindow implements Application {
     private Window window = null;
     private TextInput passGenOutput = null;
+    private PushButton genButton = null;
     private Map<String, Object> ns = null;
     private Generator gen = new Generator();
 
@@ -24,9 +25,17 @@ public class MainWindow implements Application {
         window.open(display);
         ns = bxmlSerializer.getNamespace();
         passGenOutput = (TextInput) ns.get("passGenOutput");
-        List<String> includes = Arrays.asList("alpha", "upper", "numeral", "symbol");
-        passGenOutput.setText(gen.generate(includes,16));
+        genButton = (PushButton) ns.get("genButton");
+        genButton.getButtonPressListeners().add(mkPassListener);
     }
+
+    ButtonPressListener mkPassListener = new ButtonPressListener() {
+        @Override
+        public void buttonPressed(Button button) {
+            List<String> includes = Arrays.asList("alpha", "upper", "numeral", "symbol");
+            passGenOutput.setText(gen.generate(includes, 16));
+        }
+    };
 
     @Override
     public boolean shutdown(boolean optional) {
