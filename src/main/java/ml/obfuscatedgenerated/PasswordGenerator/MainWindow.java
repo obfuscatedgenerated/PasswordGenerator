@@ -24,7 +24,7 @@ public class MainWindow implements Application {
         window.open(display);
         ns = bxmlSerializer.getNamespace();
         passGenOutput = (TextInput) ns.get("passGenOutput");
-        List<String> includes = Arrays.asList(new String[]{"alpha", "upper", "numeral", "symbol"});
+        List<String> includes = Arrays.asList("alpha", "upper", "numeral", "symbol");
         passGenOutput.setText(gen.generate(includes,16));
     }
 

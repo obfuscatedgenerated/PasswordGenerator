@@ -44,7 +44,6 @@ public class Generator {
         for (int i = 0; i < length; i++) {
             result = push_char(result,staged[rng.nextInt(staged.length)]);
         }
-        String res_str = new String(result);
-        return res_str;
+        return new String(result);
     }
 }
