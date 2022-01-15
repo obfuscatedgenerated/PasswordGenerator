@@ -43,6 +43,8 @@ public class MainWindow implements Application {
     private final ButtonPressListener copyListener = button -> {
         String content = passGenOutput.getText();
         java.awt.Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new java.awt.datatransfer.StringSelection(content), null);
+        content = null;
+        System.gc();
     };
 
     @Override
