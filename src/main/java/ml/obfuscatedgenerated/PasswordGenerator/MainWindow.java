@@ -36,9 +36,23 @@ public class MainWindow implements Application {
         DesktopApplicationContext.scheduleRecurringCallback(setSize, 1);
     }
 
+    private int safeparseInt(String input, int failValue) {
+        try {
+            int p_int = Integer.parseInt(input);
+            return p_int;
+        } catch (final NumberFormatException e) {
+            return failValue;
+        }
+    }
+
+    private boolean safeparseIntGreaterThan(String input, int compare, int safeLowest) {
+        return safeparseInt(input, safeLowest) > compare;
+    }
+
     private boolean validate () {
         boolean[] boolchecks = new boolean[]{
                 lengthInput.isTextValid(),
+                safeparseIntGreaterThan(lengthInput.getText(),0, -1),
                 true // add more validation booleans in place of this
         };
         return !Arrays.toString(boolchecks).contains("false");
@@ -65,7 +79,7 @@ public class MainWindow implements Application {
             return;
         }
         List<String> includes = Arrays.asList("alpha", "upper", "numeral", "symbol");
-        passGenOutput.setText(gen.generate(includes, 16));
+        passGenOutput.setText(gen.generate(includes, Integer.parseInt(lengthInput.getText()))); // this parseInt shouldn't fail since input is validated
     };
 
     private final ButtonPressListener copyListener = button -> {
