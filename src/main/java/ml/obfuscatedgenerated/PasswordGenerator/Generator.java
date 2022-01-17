@@ -4,12 +4,12 @@ import java.security.SecureRandom;
 import java.util.List;
 
 public class Generator {
-    private SecureRandom rng = new SecureRandom();
+    private final SecureRandom rng = new SecureRandom();
 
-    private char[] alpha = "abcdefghijklmnopqrstuvwxyz".toCharArray();
-    private char[] upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-    private char[] numeral = "1234567890".toCharArray();
-    private char[] symbol = "~`!@#$%^&*()_-+={[}]|\\:;\"'<,>.?/".toCharArray();
+    private final char[] alpha = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+    private final char[] upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+    private final char[] numeral = "1234567890".toCharArray();
+    private final char[] symbol = "~`!@#$%^&*()_-+={[}]|\\:;\"'<,>.?/".toCharArray();
 
     private char[] push_char(char[] array, char push) {
         char[] pArr = {push};
