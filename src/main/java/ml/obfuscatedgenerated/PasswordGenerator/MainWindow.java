@@ -10,10 +10,7 @@ import java.util.List;
 public class MainWindow implements Application {
     private Window window = null;
     private TextInput passGenOutput = null;
-    private PushButton genButton = null;
-    private PushButton copyButton = null;
-    private Map<String, Object> ns = null;
-    private Generator gen = new Generator();
+    private final Generator gen = new Generator();
 
     private final Runnable setSize = (() -> DesktopApplicationContext.sizeHostToFit(window));
 
@@ -23,11 +20,11 @@ public class MainWindow implements Application {
         BXMLSerializer bxmlSerializer = new BXMLSerializer();
         window = (Window) bxmlSerializer.readObject(MainWindow.class, "PassGen.bxml");
         window.open(display);
-        ns = bxmlSerializer.getNamespace();
+        Map<String, Object> ns = bxmlSerializer.getNamespace();
         passGenOutput = (TextInput) ns.get("passGenOutput");
-        genButton = (PushButton) ns.get("genButton");
+        PushButton genButton = (PushButton) ns.get("genButton");
         genButton.getButtonPressListeners().add(mkPassListener);
-        copyButton = (PushButton) ns.get("copyButton");
+        PushButton copyButton = (PushButton) ns.get("copyButton");
         copyButton.getButtonPressListeners().add(copyListener);
         DesktopApplicationContext.scheduleRecurringCallback(setSize, 1);
     }
