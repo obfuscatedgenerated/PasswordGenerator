@@ -11,9 +11,15 @@
             <FillPane orientation="vertical">
                 <Label text="Password:" styles="{color:'#aaaaaa',horizontalAlignment:'left'}"/>
                 <TextInput editable="false" bxml:id="passGenOutput"/>
-                <FillPane orientation="horizontal" styles="{}">
+                <FillPane orientation="horizontal">
                     <PushButton bxml:id="genButton" buttonData="Generate"/>
                     <PushButton bxml:id="copyButton" buttonData="Copy"/>
+                </FillPane>
+                <FillPane orientation="vertical">
+                    <FillPane orientation="horizontal">
+                        <Label text="Length:" styles="{color:'#aaaaaa'}"/>
+                        <TextInput bxml:id="lengthInput" strictValidation="false" text="16" />
+                    </FillPane>
                 </FillPane>
             </FillPane>
         </BoxPane>
