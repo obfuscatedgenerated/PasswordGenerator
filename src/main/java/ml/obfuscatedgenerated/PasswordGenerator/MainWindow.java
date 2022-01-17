@@ -3,7 +3,7 @@ package ml.obfuscatedgenerated.PasswordGenerator;
 import org.apache.pivot.beans.BXMLSerializer;
 import org.apache.pivot.collections.Map;
 import org.apache.pivot.wtk.*;
-import org.apache.pivot.wtk.validation.IntValidator;
+import org.apache.pivot.wtk.validation.IntRangeValidator;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -32,27 +32,13 @@ public class MainWindow implements Application {
         PushButton copyButton = (PushButton) ns.get("copyButton");
         copyButton.getButtonPressListeners().add(copyListener);
         lengthInput = (TextInput) ns.get("lengthInput");
-        lengthInput.setValidator(new IntValidator());
+        lengthInput.setValidator(new IntRangeValidator(1,9999));
         DesktopApplicationContext.scheduleRecurringCallback(setSize, 1);
-    }
-
-    private int safeparseInt(String input, int failValue) {
-        try {
-            int p_int = Integer.parseInt(input);
-            return p_int;
-        } catch (final NumberFormatException e) {
-            return failValue;
-        }
-    }
-
-    private boolean safeparseIntGreaterThan(String input, int compare, int safeLowest) {
-        return safeparseInt(input, safeLowest) > compare;
     }
 
     private boolean validate () {
         boolean[] boolchecks = new boolean[]{
                 lengthInput.isTextValid(),
-                safeparseIntGreaterThan(lengthInput.getText(),0, -1),
                 true // add more validation booleans in place of this
         };
         return !Arrays.toString(boolchecks).contains("false");
