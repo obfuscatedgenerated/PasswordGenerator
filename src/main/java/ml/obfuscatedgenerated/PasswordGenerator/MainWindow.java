@@ -13,9 +13,11 @@ import java.util.List;
 
 public class MainWindow implements Application {
     private Window window = null;
+    private Display activeDisplay = null;
     private TextInput passGenOutput = null;
     private final Generator gen = new Generator();
     private TextInput lengthInput = null;
+    private Dialog errBadLength = null;
 
     private final Runnable setSize = (() -> DesktopApplicationContext.sizeHostToFit(window));
 
@@ -25,6 +27,7 @@ public class MainWindow implements Application {
         BXMLSerializer bxmlSerializer = new BXMLSerializer();
         window = (Window) bxmlSerializer.readObject(MainWindow.class, "PassGen.bxml");
         window.open(display);
+        activeDisplay = display;
         Map<String, Object> ns = bxmlSerializer.getNamespace();
         passGenOutput = (TextInput) ns.get("passGenOutput");
         PushButton genButton = (PushButton) ns.get("genButton");
@@ -33,6 +36,7 @@ public class MainWindow implements Application {
         copyButton.getButtonPressListeners().add(copyListener);
         lengthInput = (TextInput) ns.get("lengthInput");
         lengthInput.setValidator(new IntRangeValidator(1,9999));
+        errBadLength = (Dialog) bxmlSerializer.readObject(MainWindow.class, "ErrorBadLength.bxml");
         DesktopApplicationContext.scheduleRecurringCallback(setSize, 1);
     }
 
@@ -62,6 +66,7 @@ public class MainWindow implements Application {
         if (!validate()) {
             System.out.println("Validation error!");
             playsound("./src/main/resources/ml/obfuscatedgenerated/PasswordGenerator/error.wav");
+            errBadLength.open(activeDisplay,window);
             return;
         }
         List<String> includes = Arrays.asList("alpha", "upper", "numeral", "symbol");

@@ -1,0 +1,22 @@
+<Dialog bxml:id="errBadLength" title="Error" modal="true"
+        xmlns:bxml="http://pivot.apache.org/bxml"
+        xmlns="org.apache.pivot.wtk">
+    <TablePane preferredWidth="200" preferredHeight="50">
+        <columns>
+            <TablePane.Column width="1*"/>
+        </columns>
+
+        <TablePane.Row height="1*">
+            <Label text="The length field is not valid."
+                   preferredWidth="200" preferredHeight="50"
+                   styles="{horizontalAlignment:'center', verticalAlignment:'center'}"/>
+        </TablePane.Row>
+
+        <TablePane.Row height="-1">
+            <BoxPane styles="{horizontalAlignment:'right'}">
+                <PushButton buttonData="Close"
+                            ButtonPressListener.buttonPressed="errBadLength.close()"/>
+            </BoxPane>
+        </TablePane.Row>
+    </TablePane>
+</Dialog>
