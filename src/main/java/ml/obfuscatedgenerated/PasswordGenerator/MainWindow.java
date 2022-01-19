@@ -1,21 +1,13 @@
 package ml.obfuscatedgenerated.PasswordGenerator;
 
-import com.sun.tools.javac.Main;
 import org.apache.pivot.beans.BXMLSerializer;
 import org.apache.pivot.collections.Map;
 import org.apache.pivot.wtk.*;
 import org.apache.pivot.wtk.validation.IntRangeValidator;
 
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.InputStream;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
+
 
 public class MainWindow implements Application {
     private Window window = null;
@@ -57,27 +49,7 @@ public class MainWindow implements Application {
         return !Arrays.toString(boolchecks).contains("false");
     }
 
-    private void playsound(String path) {
-        File sound_f = new File(path);
-        try{
-            Clip clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(sound_f));
-            clip.start();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
-    private void playresource(String resourcePath) {
-        InputStream sound_f = getClass().getResourceAsStream(resourcePath);
-        try{
-            Clip clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(new BufferedInputStream(sound_f)));
-            clip.start();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
     private final ButtonPressListener mkPassListener = button -> {
         // TODO: user options (length [DONE], structure)
@@ -85,7 +57,6 @@ public class MainWindow implements Application {
         // TODO: chunked mode with custom delimiters (e.g. 12345_abcde_@}{:?)
         if (!validate()) {
             System.out.println("Validation error!");
-            playresource("error.wav");
             errBadLength.open(activeDisplay,window);
             return;
         }
