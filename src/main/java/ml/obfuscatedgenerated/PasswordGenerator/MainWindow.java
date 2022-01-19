@@ -18,6 +18,7 @@ public class MainWindow implements Application {
     private final Generator gen = new Generator();
     private TextInput lengthInput = null;
     private Dialog errBadLength = null;
+    private Button errCloseBtn = null;
 
     private final Runnable setSize = (() -> DesktopApplicationContext.sizeHostToFit(window));
 
@@ -37,6 +38,8 @@ public class MainWindow implements Application {
         lengthInput = (TextInput) ns.get("lengthInput");
         lengthInput.setValidator(new IntRangeValidator(1,9999));
         errBadLength = (Dialog) bxmlSerializer.readObject(MainWindow.class, "ErrorBadLength.bxml");
+        errCloseBtn = (Button) ns.get("errCloseBtn");
+        errCloseBtn.getButtonPressListeners().add(closeDialogListener);
         DesktopApplicationContext.scheduleRecurringCallback(setSize, 1);
     }
 
@@ -78,6 +81,10 @@ public class MainWindow implements Application {
         java.awt.Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new java.awt.datatransfer.StringSelection(content), null);
         content = null; // imply the variable should be garbage collected
         System.gc();
+    };
+
+    private final ButtonPressListener closeDialogListener = button -> {
+        button.getWindow().close();
     };
 
     @Override

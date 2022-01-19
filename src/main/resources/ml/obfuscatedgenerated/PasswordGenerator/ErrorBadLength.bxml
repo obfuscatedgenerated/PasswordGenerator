@@ -14,8 +14,7 @@
 
         <TablePane.Row height="-1">
             <BoxPane styles="{horizontalAlignment:'right'}">
-                <PushButton buttonData="Close"
-                            ButtonPressListener.buttonPressed="errBadLength.close()"/>
+                <PushButton buttonData="Close" bxml:id="errCloseBtn" />
             </BoxPane>
         </TablePane.Row>
     </TablePane>
