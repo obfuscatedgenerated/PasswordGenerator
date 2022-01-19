@@ -16,7 +16,6 @@ public class MainWindow implements Application {
     private final Generator gen = new Generator();
     private TextInput lengthInput = null;
     private Dialog errBadLength = null;
-    private Button errCloseBtn = null;
 
     private final Runnable setSize = (() -> DesktopApplicationContext.sizeHostToFit(window));
 
@@ -36,7 +35,7 @@ public class MainWindow implements Application {
         lengthInput = (TextInput) ns.get("lengthInput");
         lengthInput.setValidator(new IntRangeValidator(1,9999));
         errBadLength = (Dialog) bxmlSerializer.readObject(MainWindow.class, "ErrorBadLength.bxml");
-        errCloseBtn = (Button) ns.get("errCloseBtn");
+        Button errCloseBtn = (Button) ns.get("errCloseBtn");
         errCloseBtn.getButtonPressListeners().add(closeDialogListener);
         DesktopApplicationContext.scheduleRecurringCallback(setSize, 1);
     }
