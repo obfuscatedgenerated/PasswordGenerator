@@ -1,7 +1,7 @@
-<Window title="Password Generator" maximized="true" preferredHeight="200" preferredWidth="350"
+<Window title="Password Generator" maximized="true" preferredHeight="300" preferredWidth="350"
         xmlns:bxml="http://pivot.apache.org/bxml"
         xmlns="org.apache.pivot.wtk">
-    <FillPane orientation="vertical" styles="{backgroundColor:'#1c1c1c'}">
+    <BoxPane orientation="vertical" styles="{backgroundColor:'#1c1c1c', horizontalAlignment:'center'}">
         <FillPane orientation="vertical" styles="{padding:25,spacing:4}">
             <Label text="Password Generator"
                    styles="{font:'Arial bold 24', color:'#cccccc',
@@ -20,16 +20,14 @@
                         <Label text="Length:" styles="{color:'#aaaaaa'}"/>
                         <TextInput bxml:id="lengthInput" strictValidation="false" text="16" />
                     </FillPane>
-                    <FillPane orientation="horizontal">
-                        <FillPane orientation="vertical" bxml:id="cboxPane">
+                    <FillPane orientation="vertical" bxml:id="cboxPane" styles="{spacing:4}">
                             <Checkbox buttonData="Use lowercase letters" bxml:id="usealpha" />
                             <Checkbox buttonData="Use uppercase letters" bxml:id="useupper" />
                             <Checkbox buttonData="Use numbers" bxml:id="usenumeral" />
                             <Checkbox buttonData="Use symbols" bxml:id="usesymbol" />
-                        </FillPane>
                     </FillPane>
                 </FillPane>
             </FillPane>
         </BoxPane>
-    </FillPane>
+    </BoxPane>
 </Window>
