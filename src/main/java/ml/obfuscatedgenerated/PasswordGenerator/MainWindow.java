@@ -73,9 +73,7 @@ public class MainWindow implements Application {
         System.gc();
     };
 
-    private final ButtonPressListener closeDialogListener = button -> {
-        button.getWindow().close();
-    };
+    private final ButtonPressListener closeDialogListener = button -> button.getWindow().close();
 
     @Override
     public boolean shutdown(boolean optional) {
