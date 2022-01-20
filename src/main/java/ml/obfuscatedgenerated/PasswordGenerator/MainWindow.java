@@ -37,6 +37,9 @@ public class MainWindow implements Application {
         errBadLength = (Dialog) bxmlSerializer.readObject(MainWindow.class, "ErrorBadLength.bxml");
         Button errCloseBtn = (Button) ns.get("errCloseBtn");
         errCloseBtn.getButtonPressListeners().add(closeDialogListener);
+        for (Component i : ((FillPane) ns.get("cboxPane"))) {
+            ((Checkbox) i).press(); // toggle on all checkboxes
+        }
         DesktopApplicationContext.scheduleRecurringCallback(setSize, 1);
     }
 

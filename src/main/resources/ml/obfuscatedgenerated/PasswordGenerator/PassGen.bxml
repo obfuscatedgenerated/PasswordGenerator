@@ -20,6 +20,14 @@
                         <Label text="Length:" styles="{color:'#aaaaaa'}"/>
                         <TextInput bxml:id="lengthInput" strictValidation="false" text="16" />
                     </FillPane>
+                    <FillPane orientation="horizontal">
+                        <FillPane orientation="vertical" bxml:id="cboxPane">
+                            <Checkbox buttonData="Use lowercase letters" bxml:id="usealpha" />
+                            <Checkbox buttonData="Use uppercase letters" bxml:id="useupper" />
+                            <Checkbox buttonData="Use numbers" bxml:id="usenumeral" />
+                            <Checkbox buttonData="Use symbols" bxml:id="usesymbol" />
+                        </FillPane>
+                    </FillPane>
                 </FillPane>
             </FillPane>
         </BoxPane>
