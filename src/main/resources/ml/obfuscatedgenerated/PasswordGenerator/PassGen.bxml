@@ -7,7 +7,7 @@
                    styles="{font:'Arial bold 24', color:'#cccccc',
                         horizontalAlignment:'center', verticalAlignment:'center'}"/>
         </FillPane>
-        <BoxPane orientation="vertical" styles="{horizontalAlignment:'center',verticalAlignment:'center'}">
+        <BoxPane orientation="vertical" styles="{horizontalAlignment:'center',verticalAlignment:'center', spacing: 15}">
             <FillPane orientation="vertical">
                 <Label text="Password:" styles="{color:'#aaaaaa',horizontalAlignment:'left'}"/>
                 <TextInput editable="false" bxml:id="passGenOutput"/>
@@ -21,12 +21,12 @@
                         <TextInput bxml:id="lengthInput" strictValidation="false" text="16" />
                     </BoxPane>
                 </FillPane>
-                <BoxPane orientation="vertical" bxml:id="cboxPane" styles="{verticalAlignment:'center'}">
-                    <Checkbox buttonData="Use lowercase letters" bxml:id="alpha" styles="{color:'#aaaaaa'}" />
-                    <Checkbox buttonData="Use uppercase letters" bxml:id="upper" styles="{color:'#aaaaaa'}" />
-                    <Checkbox buttonData="Use numbers" bxml:id="numeral" styles="{color:'#aaaaaa'}" />
-                    <Checkbox buttonData="Use symbols" bxml:id="symbol" styles="{color:'#aaaaaa'}" />
-                </BoxPane>
+            </FillPane>
+            <FillPane orientation="vertical" bxml:id="cboxPane" styles="{horizontalAlignment:'left',verticalAlignment:'bottom'}">
+                <Checkbox buttonData="Use lowercase letters" bxml:id="alpha" styles="{color:'#aaaaaa'}" />
+                <Checkbox buttonData="Use uppercase letters" bxml:id="upper" styles="{color:'#aaaaaa'}" />
+                <Checkbox buttonData="Use numbers" bxml:id="numeral" styles="{color:'#aaaaaa'}" />
+                <Checkbox buttonData="Use symbols" bxml:id="symbol" styles="{color:'#aaaaaa'}" />
             </FillPane>
         </BoxPane>
     </BoxPane>

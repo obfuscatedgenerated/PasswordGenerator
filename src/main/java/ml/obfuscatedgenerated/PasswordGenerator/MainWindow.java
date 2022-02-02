@@ -16,7 +16,7 @@ public class MainWindow implements Application {
     private final Generator gen = new Generator();
     private TextInput lengthInput = null;
     private Dialog errBadLength = null;
-    private BoxPane cboxPane = null;
+    private FillPane cboxPane = null;
 
     private final Runnable setSize = (() -> DesktopApplicationContext.sizeHostToFit(window));
 
@@ -38,7 +38,7 @@ public class MainWindow implements Application {
         errBadLength = (Dialog) bxmlSerializer.readObject(MainWindow.class, "ErrorBadLength.bxml");
         Button errCloseBtn = (Button) ns.get("errCloseBtn");
         errCloseBtn.getButtonPressListeners().add(closeDialogListener);
-        cboxPane = (BoxPane) ns.get("cboxPane");
+        cboxPane = (FillPane) ns.get("cboxPane");
         for (Component i : cboxPane) {
             ((Checkbox) i).press(); // toggle on all checkboxes
         }
