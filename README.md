@@ -1,4 +1,5 @@
 # PasswordGenerator
+> A.K.A obfuscatedGenerator
 
 ## Users
 
