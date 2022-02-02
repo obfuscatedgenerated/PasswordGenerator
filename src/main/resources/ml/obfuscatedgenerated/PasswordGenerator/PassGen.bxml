@@ -22,12 +22,12 @@
                     </BoxPane>
                 </FillPane>
             </FillPane>
-            <FillPane orientation="vertical" bxml:id="cboxPane" styles="{horizontalAlignment:'left',verticalAlignment:'bottom'}">
+            <BoxPane orientation="vertical" bxml:id="cboxPane" styles="{horizontalAlignment:'left',verticalAlignment:'bottom'}">
                 <Checkbox buttonData="Use lowercase letters" bxml:id="alpha" styles="{color:'#aaaaaa'}" />
                 <Checkbox buttonData="Use uppercase letters" bxml:id="upper" styles="{color:'#aaaaaa'}" />
                 <Checkbox buttonData="Use numbers" bxml:id="numeral" styles="{color:'#aaaaaa'}" />
                 <Checkbox buttonData="Use symbols" bxml:id="symbol" styles="{color:'#aaaaaa'}" />
-            </FillPane>
+            </BoxPane>
         </BoxPane>
     </BoxPane>
 </Window>

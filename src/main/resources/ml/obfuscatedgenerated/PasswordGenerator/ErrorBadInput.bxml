@@ -1,4 +1,4 @@
-<Dialog bxml:id="errBadLength" title="Error" modal="true"
+<Dialog bxml:id="errBadInput" title="Error" modal="true"
         xmlns:bxml="http://pivot.apache.org/bxml"
         xmlns="org.apache.pivot.wtk">
     <TablePane preferredWidth="200" preferredHeight="50">
@@ -7,7 +7,7 @@
         </columns>
 
         <TablePane.Row height="1*">
-            <Label text="The length field is not valid."
+            <Label text="An input field is not valid."
                    preferredWidth="200" preferredHeight="50"
                    styles="{horizontalAlignment:'center', verticalAlignment:'center'}"/>
         </TablePane.Row>

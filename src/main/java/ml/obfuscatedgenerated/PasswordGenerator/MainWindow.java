@@ -5,6 +5,7 @@ import org.apache.pivot.collections.Map;
 import org.apache.pivot.wtk.*;
 import org.apache.pivot.wtk.validation.IntRangeValidator;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,8 +16,8 @@ public class MainWindow implements Application {
     private TextInput passGenOutput = null;
     private final Generator gen = new Generator();
     private TextInput lengthInput = null;
-    private Dialog errBadLength = null;
-    private FillPane cboxPane = null;
+    private Dialog errBadInput = null;
+    private BoxPane cboxPane = null;
 
     private final Runnable setSize = (() -> DesktopApplicationContext.sizeHostToFit(window));
 
@@ -35,10 +36,10 @@ public class MainWindow implements Application {
         copyButton.getButtonPressListeners().add(copyListener);
         lengthInput = (TextInput) ns.get("lengthInput");
         lengthInput.setValidator(new IntRangeValidator(1,9999));
-        errBadLength = (Dialog) bxmlSerializer.readObject(MainWindow.class, "ErrorBadLength.bxml");
+        errBadInput = (Dialog) bxmlSerializer.readObject(MainWindow.class, "ErrorBadInput.bxml");
         Button errCloseBtn = (Button) ns.get("errCloseBtn");
         errCloseBtn.getButtonPressListeners().add(closeDialogListener);
-        cboxPane = (FillPane) ns.get("cboxPane");
+        cboxPane = (BoxPane) ns.get("cboxPane");
         for (Component i : cboxPane) {
             ((Checkbox) i).press(); // toggle on all checkboxes
         }
@@ -46,8 +47,15 @@ public class MainWindow implements Application {
     }
 
     private boolean validate () {
+        List <String> includes = new ArrayList<>();
+        for (Component i : cboxPane) {
+            if(((Checkbox) i).isSelected()) {
+                includes.add(((Checkbox) i).getName());
+            }
+        }
         boolean[] boolchecks = new boolean[]{
                 lengthInput.isTextValid(),
+                includes.size() > 0,
                 true // add more validation booleans in place of this
         };
         return !Arrays.toString(boolchecks).contains("false");
@@ -61,10 +69,10 @@ public class MainWindow implements Application {
         // TODO: chunked mode with custom delimiters (e.g. 12345_abcde_@}{:?)
         if (!validate()) {
             System.out.println("Validation error!");
-            errBadLength.open(activeDisplay,window);
+            errBadInput.open(activeDisplay,window);
             return;
         }
-        List <String> includes = Arrays.asList();
+        List <String> includes = new ArrayList<>();
         for (Component i : cboxPane) {
             if(((Checkbox) i).isSelected()) {
                 includes.add(((Checkbox) i).getName());
