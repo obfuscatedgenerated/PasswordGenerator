@@ -16,6 +16,7 @@ public class MainWindow implements Application {
     private final Generator gen = new Generator();
     private TextInput lengthInput = null;
     private Dialog errBadLength = null;
+    private BoxPane cboxPane = null;
 
     private final Runnable setSize = (() -> DesktopApplicationContext.sizeHostToFit(window));
 
@@ -37,7 +38,8 @@ public class MainWindow implements Application {
         errBadLength = (Dialog) bxmlSerializer.readObject(MainWindow.class, "ErrorBadLength.bxml");
         Button errCloseBtn = (Button) ns.get("errCloseBtn");
         errCloseBtn.getButtonPressListeners().add(closeDialogListener);
-        for (Component i : ((BoxPane) ns.get("cboxPane"))) {
+        cboxPane = (BoxPane) ns.get("cboxPane");
+        for (Component i : cboxPane) {
             ((Checkbox) i).press(); // toggle on all checkboxes
         }
         DesktopApplicationContext.scheduleRecurringCallback(setSize, 1);
@@ -61,6 +63,12 @@ public class MainWindow implements Application {
             System.out.println("Validation error!");
             errBadLength.open(activeDisplay,window);
             return;
+        }
+        //List <String> includes = null;
+        for (Component i : cboxPane) {
+            if(((Checkbox) i).isSelected()) {
+                System.out.println(((Checkbox) i).getID()); // how do?????????????/
+            }
         }
         List<String> includes = Arrays.asList("alpha", "upper", "numeral", "symbol");
         passGenOutput.setText(gen.generate(includes, Integer.parseInt(lengthInput.getText()))); // this parseInt shouldn't fail since input is validated

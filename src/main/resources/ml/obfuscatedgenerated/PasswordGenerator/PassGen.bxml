@@ -21,11 +21,11 @@
                         <TextInput bxml:id="lengthInput" strictValidation="false" text="16" />
                     </BoxPane>
                 </FillPane>
-                <BoxPane orientation="vertical" bxml:id="cboxPane" styles="{spacing:4, verticalAlignment:'center'}">
-                    <Checkbox buttonData="Use lowercase letters" bxml:id="usealpha" styles="{color:'#aaaaaa'}" />
-                    <Checkbox buttonData="Use uppercase letters" bxml:id="useupper" styles="{color:'#aaaaaa'}" />
-                    <Checkbox buttonData="Use numbers" bxml:id="usenumeral" styles="{color:'#aaaaaa'}" />
-                    <Checkbox buttonData="Use symbols" bxml:id="usesymbol" styles="{color:'#aaaaaa'}" />
+                <BoxPane orientation="vertical" bxml:id="cboxPane" styles="{verticalAlignment:'center'}">
+                    <Checkbox buttonData="Use lowercase letters" bxml:id="alpha" styles="{color:'#aaaaaa'}" />
+                    <Checkbox buttonData="Use uppercase letters" bxml:id="upper" styles="{color:'#aaaaaa'}" />
+                    <Checkbox buttonData="Use numbers" bxml:id="numeral" styles="{color:'#aaaaaa'}" />
+                    <Checkbox buttonData="Use symbols" bxml:id="symbol" styles="{color:'#aaaaaa'}" />
                 </BoxPane>
             </FillPane>
         </BoxPane>
