@@ -64,7 +64,6 @@ public class MainWindow implements Application {
 
 
     private final ButtonPressListener mkPassListener = button -> {
-        // TODO: user options (length [DONE], structure)
         // TODO: xkcd mode (with custom delimiters)
         // TODO: chunked mode with custom delimiters (e.g. 12345_abcde_@}{:?)
         if (!validate()) {
