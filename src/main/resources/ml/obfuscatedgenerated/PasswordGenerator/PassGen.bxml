@@ -1,7 +1,7 @@
-<Window title="Password Generator" maximized="true" preferredHeight="200" preferredWidth="350"
+<Window title="Password Generator" maximized="true" preferredHeight="300" preferredWidth="350"
         xmlns:bxml="http://pivot.apache.org/bxml"
         xmlns="org.apache.pivot.wtk">
-    <FillPane orientation="vertical" styles="{backgroundColor:'#1c1c1c'}">
+    <BoxPane orientation="vertical" styles="{backgroundColor:'#1c1c1c', horizontalAlignment:'center'}">
         <FillPane orientation="vertical" styles="{padding:25,spacing:4}">
             <Label text="Password Generator"
                    styles="{font:'Arial bold 24', color:'#cccccc',
@@ -16,12 +16,18 @@
                     <PushButton bxml:id="copyButton" buttonData="Copy"/>
                 </FillPane>
                 <FillPane orientation="vertical">
-                    <FillPane orientation="horizontal">
+                    <BoxPane orientation="horizontal" styles="{verticalAlignment:'center'}">
                         <Label text="Length:" styles="{color:'#aaaaaa'}"/>
                         <TextInput bxml:id="lengthInput" strictValidation="false" text="16" />
-                    </FillPane>
+                    </BoxPane>
                 </FillPane>
+                <BoxPane orientation="vertical" bxml:id="cboxPane" styles="{verticalAlignment:'center'}">
+                    <Checkbox buttonData="Use lowercase letters" bxml:id="alpha" styles="{color:'#aaaaaa'}" />
+                    <Checkbox buttonData="Use uppercase letters" bxml:id="upper" styles="{color:'#aaaaaa'}" />
+                    <Checkbox buttonData="Use numbers" bxml:id="numeral" styles="{color:'#aaaaaa'}" />
+                    <Checkbox buttonData="Use symbols" bxml:id="symbol" styles="{color:'#aaaaaa'}" />
+                </BoxPane>
             </FillPane>
         </BoxPane>
-    </FillPane>
+    </BoxPane>
 </Window>
