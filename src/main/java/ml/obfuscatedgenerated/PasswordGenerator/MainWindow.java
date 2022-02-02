@@ -64,13 +64,13 @@ public class MainWindow implements Application {
             errBadLength.open(activeDisplay,window);
             return;
         }
-        //List <String> includes = null;
+        List <String> includes = Arrays.asList();
         for (Component i : cboxPane) {
             if(((Checkbox) i).isSelected()) {
-                System.out.println(((Checkbox) i).getID()); // how do?????????????/
+                includes.add(((Checkbox) i).getName());
             }
         }
-        List<String> includes = Arrays.asList("alpha", "upper", "numeral", "symbol");
+        //List<String> includes = Arrays.asList("alpha", "upper", "numeral", "symbol");
         passGenOutput.setText(gen.generate(includes, Integer.parseInt(lengthInput.getText()))); // this parseInt shouldn't fail since input is validated
     };
 
