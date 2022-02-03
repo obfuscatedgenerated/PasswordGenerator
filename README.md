@@ -14,10 +14,10 @@ You can generate a new password with the "Generate" button.
 
 You can copy the password to our clipboard with the "Copy" button.
 
+You can set the length of the password with the length input box and specify the make-up of the password using the checkboxes.
+
 <!-- 
 UNCOMMENT WHEN FEATURE IS RELEASED
-
-You can set the length of the password with the length input box and specify the make-up of the password using the checkboxes.
 
 You can activate XKCD mode for [XKCD-style passwords](https://xkcd.com/936/).
 
