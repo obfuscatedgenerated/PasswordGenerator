@@ -74,7 +74,7 @@ public class MainWindow implements Application {
         List <String> includes = new ArrayList<>();
         for (Component i : cboxPane) {
             if(((Checkbox) i).isSelected()) {
-                includes.add(((Checkbox) i).getName());
+                includes.add(i.getName());
             }
         }
         //List<String> includes = Arrays.asList("alpha", "upper", "numeral", "symbol");
