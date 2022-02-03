@@ -1,6 +1,7 @@
 package ml.obfuscatedgenerated.PasswordGenerator;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -8,7 +9,7 @@ public class CleanWordGenerator {
     private static ArrayList<String> is2al(InputStream is) throws IOException {
         BufferedReader br = null;
         ArrayList<String> arr = new ArrayList<>();
-        br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+        br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
         String line;
         while((line = br.readLine()) != null)
             arr.add(line);
