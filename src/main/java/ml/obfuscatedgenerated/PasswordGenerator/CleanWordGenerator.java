@@ -17,7 +17,6 @@ public class CleanWordGenerator {
     }
     public static String generate_unfiltered() throws IOException { // this is probably very inefficient (actually, not terrible, but can still be improved at a later date)
         InputStream is = CleanWordGenerator.class.getResourceAsStream("dictionary.txt");
-        BufferedReader br = null;
         ArrayList<String> arr = is2al(is);
         Random rng = new Random(); // would use RandomAccessFile, but we are using resources
         int line = rng.nextInt(arr.size());
