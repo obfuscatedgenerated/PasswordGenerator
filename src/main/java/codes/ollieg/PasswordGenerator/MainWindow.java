@@ -1,4 +1,4 @@
-package ml.obfuscatedgenerated.PasswordGenerator;
+package codes.ollieg.PasswordGenerator;
 
 import org.apache.pivot.beans.BXMLSerializer;
 import org.apache.pivot.collections.Map;
