@@ -1,4 +1,4 @@
-package ml.obfuscatedgenerated.PasswordGenerator;
+package codes.ollieg.PasswordGenerator;
 
 import java.security.SecureRandom;
 import java.util.List;
