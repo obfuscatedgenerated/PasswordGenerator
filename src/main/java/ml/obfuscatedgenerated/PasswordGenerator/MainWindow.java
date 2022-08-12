@@ -5,21 +5,27 @@ import org.apache.pivot.collections.Map;
 import org.apache.pivot.wtk.*;
 import org.apache.pivot.wtk.validation.IntRangeValidator;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 
 public class MainWindow implements Application {
     private Window window = null;
     private Display activeDisplay = null;
     private TextInput passGenOutput = null;
-    private final Generator gen = new Generator();
+    private final RandomGenerator gen = new RandomGenerator();
+    private final XKCDGenerator xkcdgen = new XKCDGenerator();
     private TextInput lengthInput = null;
     private Dialog errBadInput = null;
     private BoxPane cboxPane = null;
 
     private final Runnable setSize = (() -> DesktopApplicationContext.sizeHostToFit(window));
+
+    public MainWindow() throws IOException {
+    }
 
     @Override
     public void startup(Display display, Map<String, String> properties)
@@ -35,21 +41,24 @@ public class MainWindow implements Application {
         PushButton copyButton = (PushButton) ns.get("copyButton");
         copyButton.getButtonPressListeners().add(copyListener);
         lengthInput = (TextInput) ns.get("lengthInput");
-        lengthInput.setValidator(new IntRangeValidator(1,9999));
+        lengthInput.setValidator(new IntRangeValidator(1, 9999));
         errBadInput = (Dialog) bxmlSerializer.readObject(MainWindow.class, "ErrorBadInput.bxml");
         Button errCloseBtn = (Button) ns.get("errCloseBtn");
         errCloseBtn.getButtonPressListeners().add(closeDialogListener);
         cboxPane = (BoxPane) ns.get("cboxPane");
         for (Component i : cboxPane) {
+            if (Objects.equals(i.getName(), "xkcd")) {
+                continue;
+            }
             ((Checkbox) i).press(); // toggle on all checkboxes
         }
         DesktopApplicationContext.scheduleRecurringCallback(setSize, 1);
     }
 
-    private boolean validate () {
-        List <String> includes = new ArrayList<>();
+    private boolean validate() {
+        List<String> includes = new ArrayList<>();
         for (Component i : cboxPane) {
-            if(((Checkbox) i).isSelected()) {
+            if (((Checkbox) i).isSelected()) {
                 includes.add(((Checkbox) i).getName());
             }
         }
@@ -62,23 +71,24 @@ public class MainWindow implements Application {
     }
 
 
-
     private final ButtonPressListener mkPassListener = button -> {
-        // TODO: xkcd mode (with custom delimiters)
-        // TODO: chunked mode with custom delimiters (e.g. 12345_abcde_@}{:?)
         if (!validate()) {
             System.out.println("Validation error!");
-            errBadInput.open(activeDisplay,window);
+            errBadInput.open(activeDisplay, window);
             return;
         }
-        List <String> includes = new ArrayList<>();
-        for (Component i : cboxPane) {
-            if(((Checkbox) i).isSelected()) {
-                includes.add(i.getName());
+        if (((Checkbox) cboxPane.getNamedComponent("xkcd")).isSelected()) {
+            passGenOutput.setText(xkcdgen.generate(Integer.parseInt(lengthInput.getText()), "-")); // this parseInt shouldn't fail since input is validated
+        } else {
+            List<String> includes = new ArrayList<>();
+            for (Component i : cboxPane) {
+                if (((Checkbox) i).isSelected()) {
+                    includes.add(i.getName());
+                }
             }
+            //List<String> includes = Arrays.asList("alpha", "upper", "numeral", "symbol");
+            passGenOutput.setText(gen.generate(includes, Integer.parseInt(lengthInput.getText()))); // this parseInt shouldn't fail since input is validated
         }
-        //List<String> includes = Arrays.asList("alpha", "upper", "numeral", "symbol");
-        passGenOutput.setText(gen.generate(includes, Integer.parseInt(lengthInput.getText()))); // this parseInt shouldn't fail since input is validated
     };
 
     private final ButtonPressListener copyListener = button -> {

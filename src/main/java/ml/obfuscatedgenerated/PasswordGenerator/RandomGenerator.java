@@ -3,7 +3,7 @@ package ml.obfuscatedgenerated.PasswordGenerator;
 import java.security.SecureRandom;
 import java.util.List;
 
-public class Generator {
+public class RandomGenerator {
     private final SecureRandom rng = new SecureRandom();
 
     private final char[] alpha = "abcdefghijklmnopqrstuvwxyz".toCharArray();

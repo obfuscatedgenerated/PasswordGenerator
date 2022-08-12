@@ -27,6 +27,7 @@
                 <Checkbox buttonData="Use uppercase letters" bxml:id="upper" styles="{color:'#aaaaaa'}" />
                 <Checkbox buttonData="Use numbers" bxml:id="numeral" styles="{color:'#aaaaaa'}" />
                 <Checkbox buttonData="Use symbols" bxml:id="symbol" styles="{color:'#aaaaaa'}" />
+                <Checkbox buttonData="XKCD mode" bxml:id="xkcd" styles="{color:'#aaaaaa'}" />
             </BoxPane>
         </BoxPane>
     </BoxPane>
