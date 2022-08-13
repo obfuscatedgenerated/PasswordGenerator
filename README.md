@@ -33,4 +33,4 @@ You can set a custom delimiter per characters using the delimiter options.
 1. `git clone https://github.com/obfuscatedgenerated/PasswordGenerator.git` or make a fork and clone that instead.
 2. `mvn install`
 3. [Download the Apache Pivot JAR files](https://dlcdn.apache.org//pivot/binaries/apache-pivot-2.0.5.zip) for syntax highlighting for your IDE. The /deps/ directory has been gitignored for this purpose.
-4. The MainWindow class holds the code for initialising the program and intermediary code between classes and the UI. The Generator class holds the code for password generation. The CleanWordGenerator class holds the code for generating a random, clean, English word. The UI is based on PassGen.bxml in resources.
+4. The MainWindow class holds the code for initialising the program and intermediary code between classes and the UI. The RandomGenerator class holds the code for random character password generation. The XKCDGenerator class holds the code for generating XKCD passwords. The UI is based on PassGen.bxml in resources.
