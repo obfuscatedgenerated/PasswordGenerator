@@ -36,6 +36,7 @@ public class CleanWordGenerator {
     public String generate_filtered() { // could just provide a filtered wordlist, but this is fine for now
         genLoop: while (true) {
             String s = generate_unfiltered();
+            s = s.toLowerCase();
             for (String i : badwords) {
                 if (s.matches(i)) {
                     continue genLoop;
