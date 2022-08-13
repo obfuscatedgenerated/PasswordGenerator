@@ -15,7 +15,7 @@ public class CleanWordGenerator {
     public CleanWordGenerator() throws IOException {
         InputStream dict_is = CleanWordGenerator.class.getResourceAsStream("dictionary.txt");
         dictionary = is2al(dict_is);
-        InputStream bw_is = CleanWordGenerator.class.getResourceAsStream("dictionary.txt");
+        InputStream bw_is = CleanWordGenerator.class.getResourceAsStream("badwords.txt");
         badwords = is2al(bw_is);
     }
 
