@@ -37,7 +37,7 @@
         <dependency>
             <groupId>org.apache.opennlp</groupId>
             <artifactId>opennlp-tools</artifactId>
-            <version>2.0.0</version>
+            <version>2.1.0</version>
         </dependency>
     </dependencies>
 
@@ -56,8 +56,7 @@
                 <configuration>
                     <finalName>${project.name} v${project.version}</finalName>
                     <transformers>
-                        <transformer
-                                implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                             <mainClass>codes.ollieg.PasswordGenerator.MainWindow</mainClass>
                         </transformer>
                     </transformers>
